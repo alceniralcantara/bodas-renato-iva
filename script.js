@@ -1,4 +1,5 @@
 const pixKey = '11972933217';
+
 document.getElementById('copyPix').addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(pixKey);
@@ -8,22 +9,31 @@ document.getElementById('copyPix').addEventListener('click', async () => {
   }
 });
 
-// Create YouTube iframe for background music
-const ytUrl = 'https://www.youtube.com/embed/eU9ChWn_G-8?autoplay=1&loop=1&playlist=eU9ChWn_G-8';
+// Create hidden YouTube iframe for background music
+const ytUrl = 'https://www.youtube.com/embed/eU9ChWn_G-8?autoplay=1&loop=1&playlist=eU9ChWn_G-8&controls=0&showinfo=0&modestbranding=1&rel=0';
 const musicFrame = document.createElement('iframe');
 musicFrame.id = 'musicFrame';
-musicFrame.src = ytUrl;
-musicFrame.style.display = 'none';
+// Hide the iframe completely
+musicFrame.style.position = 'absolute';
+musicFrame.style.width = '0';
+musicFrame.style.height = '0';
+musicFrame.style.border = '0';
+musicFrame.style.opacity = '0';
+// Start with no source; will be set when playing
+musicFrame.src = '';
 musicFrame.allow = 'autoplay';
 document.body.appendChild(musicFrame);
 
 // Toggle music on button click
-document.getElementById('musicBtn').addEventListener('click', () => {
-  if (musicFrame.style.display === 'none') {
-    musicFrame.style.display = 'block';
-    document.getElementById('musicBtn').textContent = 'Parar música';
+const musicBtn = document.getElementById('musicBtn');
+musicBtn.addEventListener('click', () => {
+  if (musicFrame.src) {
+    // Stop the music by clearing the source
+    musicFrame.src = '';
+    musicBtn.textContent = 'Tocar música';
   } else {
-    musicFrame.style.display = 'none';
-    document.getElementById('musicBtn').textContent = 'Tocar música';
+    // Play music by setting the YouTube URL
+    musicFrame.src = ytUrl;
+    musicBtn.textContent = 'Parar música';
   }
 });
