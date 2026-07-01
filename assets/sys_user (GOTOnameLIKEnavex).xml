@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2026-06-26 14:06:00">
+<sys_user action="INSERT_OR_UPDATE">
+<active>true</active>
+<avatar/>
+<average_daily_fte/>
+<building display_value=""/>
+<calendar_integration>1</calendar_integration>
+<city/>
+<company display_value=""/>
+<correlation_id/>
+<cost_center display_value=""/>
+<country/>
+<date_format/>
+<default_perspective display_value=""/>
+<department display_value=""/>
+<edu_status>faculty</edu_status>
+<email>aalcan20@its.jnj.com</email>
+<employee_number>TCS_Test_Navex_Integration</employee_number>
+<enable_multifactor_authn>false</enable_multifactor_authn>
+<executive>no</executive>
+<failed_attempts/>
+<fax/>
+<federated_id>LiyJDU/TI3EiAiOcpJjulieaMAgsnlaC9tkNM4icNno=</federated_id>
+<first_name>TCS_Test_Navex</first_name>
+<gender/>
+<home_phone/>
+<hr_integration_source display_value=""/>
+<identity_type>unclassified</identity_type>
+<internal_integration_user>false</internal_integration_user>
+<introduction/>
+<job_code display_value=""/>
+<last_login/>
+<last_login_device/>
+<last_login_time/>
+<last_name>Integration</last_name>
+<last_password/>
+<ldap_server display_value=""/>
+<location display_value=""/>
+<locked_out>false</locked_out>
+<manager display_value="Alcenir Nascimento Alcantara (643056646)">36911e8a2b82bed075b0fa40de91bff6</manager>
+<middle_name/>
+<mobile_phone/>
+<name>TCS_Test_Navex Integration (TCS_Test_Navex_Integration)</name>
+<notification>2</notification>
+<organization display_value=""/>
+<password_needs_reset>false</password_needs_reset>
+<phone/>
+<photo/>
+<preferred_language/>
+<primary_group display_value=""/>
+<roles/>
+<schedule display_value=""/>
+<source/>
+<sso_source/>
+<state/>
+<street/>
+<sys_class_name>sys_user</sys_class_name>
+<sys_created_by>AAlcan20</sys_created_by>
+<sys_created_on>2026-06-18 14:09:28</sys_created_on>
+<sys_domain>global</sys_domain>
+<sys_domain_path>/</sys_domain_path>
+<sys_id>b7db04312be1c3d025bdfd10de91bf7d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>AAlcan20</sys_updated_by>
+<sys_updated_on>2026-06-18 14:09:28</sys_updated_on>
+<time_format/>
+<time_sheet_policy display_value=""/>
+<time_zone/>
+<title/>
+<transaction_log/>
+<u_assistant display_value=""/>
+<u_employee_status>ACTIVE</u_employee_status>
+<u_employee_type>Employees</u_employee_type>
+<u_hr_system_id/>
+<u_is_gs>false</u_is_gs>
+<u_is_people_leader>false</u_is_people_leader>
+<u_is_supporting_gs>false</u_is_supporting_gs>
+<u_long_term_contractor>false</u_long_term_contractor>
+<u_preferred_first_name/>
+<u_sector/>
+<u_start_date/>
+<u_tsa_employee>false</u_tsa_employee>
+<user_name>TCS_Test_Navex_Integration</user_name>
+<user_password/>
+<vip>false</vip>
+<web_service_access_only>false</web_service_access_only>
+<zip/>
+</sys_user>
+</unload>
