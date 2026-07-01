@@ -1,6 +1,4 @@
 const pixKey = '11972933217';
-
-// Copy Pix key to clipboard
 document.getElementById('copyPix').addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(pixKey);
@@ -10,32 +8,59 @@ document.getElementById('copyPix').addEventListener('click', async () => {
   }
 });
 
-// Create hidden YouTube iframe for background music
-const ytUrl = 'https://www.youtube.com/embed/eU9ChWn_G-8?autoplay=1&loop=1&playlist=eU9ChWn_G-8&controls=0&showinfo=0&modestbranding=1&rel=0';
-let musicFrame = document.getElementById('musicFrame') || document.createElement('iframe');
-musicFrame.id = 'musicFrame';
-musicFrame.style.position = 'absolute';
-musicFrame.style.width = '0';
-musicFrame.style.height = '0';
-musicFrame.style.border = '0';
-musicFrame.style.opacity = '0';
-musicFrame.src = '';
-// Allow both autoplay and encrypted‑media so audio plays without showing the video
-musicFrame.allow = 'autoplay; encrypted-media';
-if (!musicFrame.parentElement) {
-  document.body.appendChild(musicFrame);
+let audioCtx, master, playing = false, timer;
+const chords = [
+  [261.63, 329.63, 392.00],
+  [220.00, 329.63, 440.00],
+  [246.94, 293.66, 392.00],
+  [196.00, 261.63, 329.63]
+];
+
+function playTone(freq, start, dur) {
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'sine';
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0.08, start);
+  gain.gain.linearRampToValueAtTime(0.035, start + 0.08);
+  gain.gain.exponentialRampToValueAtTime(0.001, start + dur);
+  osc.connect(gain).connect(master);
+  osc.start(start);
+  osc.stop(start + dur + 0.05);
 }
 
-// Toggle music on button click
-const musicBtn = document.getElementById('musicBtn');
-musicBtn.addEventListener('click', () => {
-  if (musicFrame.src) {
-    // Stop the music by clearing the source
-    musicFrame.src = '';
-    musicBtn.textContent = 'Tocar música';
+function scheduleMusic() {
+  const now = audioCtx.currentTime;
+  for (let i = 0; i < 8; i++) {
+    const chord = chords[i % chords.length];
+    chord.forEach((f, idx) => playTone(f, now + i * 1.8 + idx * 0.08, 1.55));
+    playTone(chord[0] * 2, now + i * 1.8 + 0.65, 0.9);
+  }
+}
+
+document.getElementById('musicBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('musicBtn');
+  if (!playing) {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    await audioCtx.resume();
+    master = audioCtx.createGain();
+    master.gain.value = 0.75;
+    master.connect(audioCtx.destination);
+    playing = true;
+    btn.textContent = 'Pausar música suave';
+    scheduleMusic();
+    timer = setInterval(scheduleMusic, 13000);
   } else {
-    // Play music by setting the YouTube URL
-    musicFrame.src = ytUrl;
-    musicBtn.textContent = 'Parar música';
+    playing = false;
+    btn.textContent = 'Tocar música suave';
+    clearInterval(timer);
+    if (master) {
+      master.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 4);
+    }
+    setTimeout(() => {
+      if (audioCtx) {
+        audioCtx.close();
+      }
+    }, 4000);
   }
 });
