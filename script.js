@@ -1,5 +1,6 @@
 const pixKey = '11972933217';
 
+// Copy Pix key to clipboard
 document.getElementById('copyPix').addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(pixKey);
@@ -11,18 +12,19 @@ document.getElementById('copyPix').addEventListener('click', async () => {
 
 // Create hidden YouTube iframe for background music
 const ytUrl = 'https://www.youtube.com/embed/eU9ChWn_G-8?autoplay=1&loop=1&playlist=eU9ChWn_G-8&controls=0&showinfo=0&modestbranding=1&rel=0';
-const musicFrame = document.createElement('iframe');
+let musicFrame = document.getElementById('musicFrame') || document.createElement('iframe');
 musicFrame.id = 'musicFrame';
-// Hide the iframe completely
 musicFrame.style.position = 'absolute';
 musicFrame.style.width = '0';
 musicFrame.style.height = '0';
 musicFrame.style.border = '0';
 musicFrame.style.opacity = '0';
-// Start with no source; will be set when playing
 musicFrame.src = '';
-musicFrame.allow = 'autoplay';
-document.body.appendChild(musicFrame);
+// Allow both autoplay and encrypted‑media so audio plays without showing the video
+musicFrame.allow = 'autoplay; encrypted-media';
+if (!musicFrame.parentElement) {
+  document.body.appendChild(musicFrame);
+}
 
 // Toggle music on button click
 const musicBtn = document.getElementById('musicBtn');
