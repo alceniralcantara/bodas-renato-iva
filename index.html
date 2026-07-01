@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bodas de Ouro — Renato e Iva</title>
+  <meta name="description" content="Convite digital para celebração das Bodas de Ouro de Renato e Iva." />
+  <meta property="og:title" content="Bodas de Ouro — Renato e Iva" />
+  <meta property="og:description" content="Você é nosso convidado para celebrar 50 anos de uma linda história." />
+  <meta property="og:image" content="assets/convite-bodas-renato-iva.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="topbar">
+    <a href="#inicio">Início</a>
+    <a href="#endereco">Endereço</a>
+    <a href="#presentes">Presentes</a>
+    <a href="#pix">Pix</a>
+    <a href="#confirmar">Confirmar</a>
+  </nav>
+
+  <main id="inicio" class="hero">
+    <div class="sparkles" aria-hidden="true"></div>
+    <section class="card intro">
+      <p class="overline">Convite especial</p>
+      <h1>Renato <span>♥</span> Iva</h1>
+      <h2>Bodas de Ouro — 50 anos</h2>
+      <p class="date">10 de outubro de 2026 • às 16h00</p>
+      <button id="musicBtn" class="music">▶ Tocar música suave</button>
+    </section>
+
+    <section class="invite-frame" aria-label="Convite">
+      <img src="assets/convite-bodas-renato-iva.png" alt="Convite de Bodas de Ouro de Renato e Iva" />
+    </section>
+  </main>
+
+  <section id="endereco" class="section card">
+    <p class="overline">Local da celebração</p>
+    <h2>Endereço</h2>
+    <p>Rua João Florêncio de Sales Gomes, 242</p>
+    <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rua%20Jo%C3%A3o%20Flor%C3%AAncio%20de%20Sales%20Gomes%20242">Abrir no Google Maps</a>
+  </section>
+
+  <section id="presentes" class="section card">
+    <p class="overline">Com carinho</p>
+    <h2>Lista de presentes</h2>
+    <p>Sua presença já tornará este dia ainda mais especial.</p>
+    <p>Caso deseje nos presentear, ficaremos muito felizes com uma contribuição espontânea via Pix ou com um presente de sua preferência.</p>
+  </section>
+
+  <section id="pix" class="section card pix-card">
+    <p class="overline">Presente via Pix</p>
+    <h2>QR Code Pix</h2>
+    <img class="qr" src="assets/qrcode-pix.png" alt="QR Code com a chave Pix telefone 11972933217" />
+    <p>Chave Pix telefone: <strong id="pixKey">11972933217</strong></p>
+    <button class="btn" id="copyPix">Copiar chave Pix</button>
+    <p id="copyStatus" class="status" aria-live="polite"></p>
+  </section>
+
+  <section id="confirmar" class="section card">
+    <p class="overline">Confirmação</p>
+    <h2>Confirme sua presença</h2>
+    <p>Para nos ajudar na organização, confirme sua presença pelo WhatsApp.</p>
+    <a class="btn" target="_blank" rel="noopener" href="https://wa.me/5511972933217?text=Ol%C3%A1%2C%20Renato%20e%20Iva!%20Confirmo%20minha%20presen%C3%A7a%20na%20celebra%C3%A7%C3%A3o%20das%20Bodas%20de%20Ouro.">Confirmar pelo WhatsApp</a>
+  </section>
+
+  <footer>
+    <p>Com amor e gratidão, Renato e Iva.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
