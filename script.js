@@ -1,10 +1,41 @@
-const pixKey = '11972933217';
+const pixKey = document.getElementById('pixKey').textContent.trim();
+const residentialAddress = 'Rua Silvio Gallicho, 301, Jardim Ipê, São Paulo - SP, 05797-440';
+
+async function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.setAttribute('readonly', '');
+  textArea.style.position = 'fixed';
+  textArea.style.opacity = '0';
+  document.body.appendChild(textArea);
+  textArea.select();
+  const copied = document.execCommand('copy');
+  textArea.remove();
+  if (!copied) throw new Error('Não foi possível copiar');
+}
+
+document.getElementById('copyAddress').addEventListener('click', async () => {
+  const status = document.getElementById('addressCopyStatus');
+  try {
+    await copyText(residentialAddress);
+    status.textContent = 'Endereço copiado! Cole-o no endereço de entrega do Mercado Livre.';
+  } catch {
+    status.textContent = 'Não foi possível copiar automaticamente. Peça o endereço à família.';
+  }
+});
+
 document.getElementById('copyPix').addEventListener('click', async () => {
   try {
-    await navigator.clipboard.writeText(pixKey);
-    document.getElementById('copyStatus').textContent = 'Chave Pix copiada!';
+    await copyText(pixKey);
+    document.getElementById('copyStatus').textContent = 'Código Pix copiado!';
   } catch {
-    document.getElementById('copyStatus').textContent = 'Chave Pix: ' + pixKey;
+    document.querySelector('.pix-details').open = true;
+    document.getElementById('copyStatus').textContent = 'Não foi possível copiar automaticamente. Selecione o código acima.';
   }
 });
 
@@ -41,25 +72,39 @@ function scheduleMusic() {
 document.getElementById('musicBtn').addEventListener('click', async () => {
   const btn = document.getElementById('musicBtn');
   if (!playing) {
-    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) {
+      btn.textContent = 'Música indisponível neste navegador';
+      btn.disabled = true;
+      return;
+    }
+    audioCtx = new AudioContext();
     await audioCtx.resume();
     master = audioCtx.createGain();
     master.gain.value = 0.75;
     master.connect(audioCtx.destination);
     playing = true;
+    btn.setAttribute('aria-pressed', 'true');
     btn.textContent = 'Pausar música suave';
     scheduleMusic();
-    timer = setInterval(scheduleMusic, 13000);
+    timer = setInterval(scheduleMusic, 14400);
   } else {
     playing = false;
+    btn.setAttribute('aria-pressed', 'false');
     btn.textContent = 'Tocar música suave';
     clearInterval(timer);
-    if (master) {
-      master.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 4);
+    const contextToClose = audioCtx;
+    const masterToFade = master;
+    if (masterToFade) {
+      masterToFade.gain.exponentialRampToValueAtTime(0.0001, contextToClose.currentTime + 4);
     }
     setTimeout(() => {
-      if (audioCtx) {
-        audioCtx.close();
+      if (contextToClose) {
+        contextToClose.close();
+      }
+      if (audioCtx === contextToClose) {
+        audioCtx = null;
+        master = null;
       }
     }, 4000);
   }
