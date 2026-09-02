@@ -14,6 +14,10 @@ Arquivos prontos para publicar no GitHub Pages.
 - Texto: edite `index.html`.
 - Cores/visual: edite `styles.css`.
 - Imagem do convite: substitua `assets/convite-bodas-renato-iva.png`.
-- QR Code: substitua `assets/qrcode-pix.png` se seu banco gerar um QR Code Pix oficial.
+- Lista de presentes: altere o link `https://meli.la/2ku4G94` em `index.html`.
+- Endereço para entrega: altere a constante `residentialAddress` em `script.js`.
+- Página do Pix: altere o link do Nubank em `index.html`.
+- QR Code: substitua `assets/qrcode-pix-nubank.png` por uma nova imagem oficial do banco.
+- Código Pix Copia e Cola: altere o conteúdo do elemento `#pixKey` em `index.html`.
 
 Observação: a música de fundo é instrumental suave gerada no navegador após o convidado tocar no botão, pois celulares normalmente bloqueiam reprodução automática.

@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#8f651e" />
   <title>Bodas de Ouro — Renato e Iva</title>
   <meta name="description" content="Convite digital para celebração das Bodas de Ouro de Renato e Iva." />
   <meta property="og:title" content="Bodas de Ouro — Renato e Iva" />
@@ -11,7 +12,9 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav class="topbar">
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <nav class="topbar" aria-label="Navegação principal">
     <a href="#inicio">Início</a>
     <a href="#endereco">Endereço</a>
     <a href="#presentes">Presentes</a>
@@ -19,20 +22,21 @@
     <a href="#confirmar">Confirmar</a>
   </nav>
 
-  <main id="inicio" class="hero">
+  <main id="conteudo">
+  <header id="inicio" class="hero">
     <div class="sparkles" aria-hidden="true"></div>
     <section class="card intro">
       <p class="overline">Convite especial</p>
       <h1>Renato <span>♥</span> Iva</h1>
       <h2>Bodas de Ouro — 50 anos</h2>
       <p class="date">10 de outubro de 2026 • às 17h00</p>
-      <button id="musicBtn" class="music">▶ Tocar música suave</button>
+      <button id="musicBtn" class="music" type="button" aria-pressed="false">▶ Tocar música suave</button>
     </section>
 
     <section class="invite-frame" aria-label="Convite">
       <img src="assets/convite-bodas-renato-iva.png" alt="Convite de Bodas de Ouro de Renato e Iva" />
     </section>
-  </main>
+  </header>
 
   <section id="endereco" class="section card">
     <p class="overline">Local da celebração</p>
@@ -45,15 +49,27 @@
     <p class="overline">Com carinho</p>
     <h2>Lista de presentes</h2>
     <p>Sua presença já tornará este dia ainda mais especial.</p>
-    <p>Caso deseje nos presentear, ficaremos muito felizes com uma contribuição espontânea via Pix ou com um presente de sua preferência.</p>
+    <p>Caso deseje nos presentear, preparamos uma lista no Mercado Livre. Abra a lista e siga as instruções da plataforma para escolher o presente.</p>
+    <a class="btn" target="_blank" rel="noopener noreferrer" href="https://meli.la/2ku4G94">Ver lista no Mercado Livre <span aria-hidden="true">↗</span></a>
+    <p class="helper">O pagamento é realizado somente no ambiente seguro do Mercado Livre.</p>
+    <p>Caso queira enviar o presente do Mercado Livre diretamente para a nossa residência, copie o endereço e insira no endereço de entrega do Mercado Livre.</p>
+    <button class="btn btn-secondary" id="copyAddress" type="button">Copiar endereço de entrega</button>
+    <p id="addressCopyStatus" class="status" aria-live="polite"></p>
   </section>
 
   <section id="pix" class="section card pix-card">
     <p class="overline">Presente via Pix</p>
-    <h2>QR Code Pix</h2>
-    <img class="qr" src="assets/qrcode-pix.png" alt="QR Code com a chave Pix telefone 11972933217" />
-    <p>Chave Pix telefone: <strong id="pixKey">11972933217</strong></p>
-    <button class="btn" id="copyPix">Copiar chave Pix</button>
+    <h2>Presenteie pelo Nubank</h2>
+    <p>Você pode abrir a página de pagamento, escanear o QR Code ou copiar o código Pix.</p>
+    <img class="qr" src="assets/qrcode-pix-nubank.png" alt="QR Code Pix Nubank de Iva Nascimento de Alcanta" loading="lazy" />
+    <div class="action-group">
+      <a class="btn" target="_blank" rel="noopener noreferrer" href="https://nubank.com.br/cobrar/yik6z/6a94dbfa-f506-433c-878f-33f73d2e6ff1">Abrir página do Pix <span aria-hidden="true">↗</span></a>
+      <button class="btn btn-secondary" id="copyPix" type="button">Copiar código Pix</button>
+    </div>
+    <details class="pix-details">
+      <summary>Ver código Pix Copia e Cola</summary>
+      <code id="pixKey">00020126360014BR.GOV.BCB.PIX0114+55119579208195204000053039865802BR5925Iva Nascimento de Alcanta6009SAO PAULO62140510FeIbvJUZgw6304FDCA</code>
+    </details>
     <p id="copyStatus" class="status" aria-live="polite"></p>
   </section>
 
@@ -63,6 +79,7 @@
     <p>Para nos ajudar na organização, confirme sua presença pelo WhatsApp.</p>
     <a class="btn" target="_blank" rel="noopener" href="https://wa.me/5511972933217?text=Ol%C3%A1%2C%20Renato%20e%20Iva!%20Confirmo%20minha%20presen%C3%A7a%20na%20celebra%C3%A7%C3%A3o%20das%20Bodas%20de%20Ouro.">Confirmar pelo WhatsApp</a>
   </section>
+  </main>
 
   <footer>
     <p>Com amor e gratidão, Renato e Iva.</p>
