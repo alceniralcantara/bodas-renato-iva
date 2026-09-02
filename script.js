@@ -1,5 +1,5 @@
 const pixKey = document.getElementById('pixKey').textContent.trim();
-const residentialAddress = 'Rua Silvio Gallicho, 301, Jardim Ipê, São Paulo - SP, 05797-440';
+const eventDate = new Date('2026-10-10T16:00:00-03:00');
 
 async function copyText(text) {
   if (navigator.clipboard && window.isSecureContext) {
@@ -19,15 +19,33 @@ async function copyText(text) {
   if (!copied) throw new Error('Não foi possível copiar');
 }
 
-document.getElementById('copyAddress').addEventListener('click', async () => {
-  const status = document.getElementById('addressCopyStatus');
-  try {
-    await copyText(residentialAddress);
-    status.textContent = 'Endereço copiado! Cole-o no endereço de entrega do Mercado Livre.';
-  } catch {
-    status.textContent = 'Não foi possível copiar automaticamente. Peça o endereço à família.';
+function updateCountdown() {
+  const countdown = document.getElementById('countdown');
+  const message = document.getElementById('countdownMessage');
+  const remaining = eventDate.getTime() - Date.now();
+
+  if (remaining <= 0) {
+    countdown.hidden = true;
+    message.textContent = 'Chegou o grande dia!';
+    return;
   }
-});
+
+  const totalSeconds = Math.floor(remaining / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  document.getElementById('countdownDays').textContent = days;
+  document.getElementById('countdownHours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('countdownMinutes').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('countdownSeconds').textContent = String(seconds).padStart(2, '0');
+  countdown.setAttribute('aria-label', `Faltam ${days} dias, ${hours} horas e ${minutes} minutos para a celebração`);
+  countdown.hidden = false;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
 document.getElementById('copyPix').addEventListener('click', async () => {
   try {

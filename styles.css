@@ -108,6 +108,29 @@ summary:focus-visible {
 
 .date { font-size: 1.1rem; }
 
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(72px, 1fr));
+  gap: .65rem;
+  max-width: 560px;
+  margin: 1.25rem auto;
+}
+
+.countdown[hidden] { display: none; }
+
+.countdown div {
+  padding: .8rem .45rem;
+  background: rgba(255, 255, 255, .62);
+  border: 1px solid rgba(169, 119, 29, .3);
+  border-radius: 14px;
+}
+
+.countdown strong,
+.countdown span { display: block; }
+.countdown strong { color: var(--gold-dark); font-size: clamp(1.4rem, 5vw, 2rem); }
+.countdown span { margin-top: .2rem; font-size: .78rem; text-transform: uppercase; }
+.countdown-message { min-height: 1.4rem; color: var(--gold-dark); font-weight: 700; }
+
 .music,
 .btn {
   display: inline-block;
@@ -212,6 +235,7 @@ footer { padding: 2rem 1rem; color: #65461a; text-align: center; }
   .card { border-radius: 18px; }
   .section { padding: 1.5rem .85rem; }
   .action-group .btn { width: 100%; }
+  .countdown { grid-template-columns: repeat(2, minmax(90px, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
