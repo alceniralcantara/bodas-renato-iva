@@ -6,9 +6,21 @@
   <meta name="theme-color" content="#8f651e" />
   <title>Bodas de Ouro — Renato e Iva</title>
   <meta name="description" content="Convite digital para celebração das Bodas de Ouro de Renato e Iva." />
+  <link rel="canonical" href="https://alceniralcantara.github.io/bodas-renato-iva/" />
   <meta property="og:title" content="Bodas de Ouro — Renato e Iva" />
   <meta property="og:description" content="Você é nosso convidado para celebrar 50 anos de uma linda história." />
-  <meta property="og:image" content="assets/convite-bodas-renato-iva.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:url" content="https://alceniralcantara.github.io/bodas-renato-iva/" />
+  <meta property="og:image" content="https://alceniralcantara.github.io/bodas-renato-iva/assets/compartilhamento-bodas-renato-iva.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Convite das Bodas de Ouro de Renato e Iva" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bodas de Ouro — Renato e Iva" />
+  <meta name="twitter:description" content="Você é nosso convidado para celebrar 50 anos de uma linda história." />
+  <meta name="twitter:image" content="https://alceniralcantara.github.io/bodas-renato-iva/assets/compartilhamento-bodas-renato-iva.jpg" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -29,12 +41,22 @@
       <p class="overline">Convite especial</p>
       <h1>Renato <span>♥</span> Iva</h1>
       <h2>Bodas de Ouro — 50 anos</h2>
-      <p class="date">10 de outubro de 2026 • às 17h00</p>
+      <p class="date">10 de outubro de 2026 • às 16h00</p>
+      <div id="countdown" class="countdown" role="timer" aria-label="Contagem regressiva para a celebração" hidden>
+        <div><strong id="countdownDays">0</strong><span>dias</span></div>
+        <div><strong id="countdownHours">0</strong><span>horas</span></div>
+        <div><strong id="countdownMinutes">0</strong><span>minutos</span></div>
+        <div><strong id="countdownSeconds">0</strong><span>segundos</span></div>
+      </div>
+      <p id="countdownMessage" class="countdown-message" aria-live="polite"></p>
       <button id="musicBtn" class="music" type="button" aria-pressed="false">▶ Tocar música suave</button>
     </section>
 
     <section class="invite-frame" aria-label="Convite">
-      <img src="assets/convite-bodas-renato-iva.png" alt="Convite de Bodas de Ouro de Renato e Iva" />
+      <picture>
+        <source srcset="assets/convite-bodas-renato-iva.jpg" type="image/jpeg" />
+        <img src="assets/convite-bodas-renato-iva.png" alt="Convite de Bodas de Ouro de Renato e Iva" width="1024" height="1536" fetchpriority="high" />
+      </picture>
     </section>
   </header>
 
@@ -42,7 +64,11 @@
     <p class="overline">Local da celebração</p>
     <h2>Endereço</h2>
     <p>Rua João Florêncio de Sales Gomes, 242</p>
-    <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rua%20Jo%C3%A3o%20Flor%C3%AAncio%20de%20Sales%20Gomes%20242">Abrir no Google Maps</a>
+    <div class="action-group">
+      <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Rua%20Jo%C3%A3o%20Flor%C3%AAncio%20de%20Sales%20Gomes%20242">Abrir no Google Maps</a>
+      <a class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="https://www.waze.com/ul?q=Rua%20Jo%C3%A3o%20Flor%C3%AAncio%20de%20Sales%20Gomes%2C%20242&amp;navigate=yes&amp;utm_source=bodas_renato_iva">Abrir no Waze</a>
+      <a class="btn btn-secondary" href="evento-renato-iva.ics" download>Adicionar ao calendário</a>
+    </div>
   </section>
 
   <section id="presentes" class="section card">
@@ -52,9 +78,8 @@
     <p>Caso deseje nos presentear, preparamos uma lista no Mercado Livre. Abra a lista e siga as instruções da plataforma para escolher o presente.</p>
     <a class="btn" target="_blank" rel="noopener noreferrer" href="https://meli.la/2ku4G94">Ver lista no Mercado Livre <span aria-hidden="true">↗</span></a>
     <p class="helper">O pagamento é realizado somente no ambiente seguro do Mercado Livre.</p>
-    <p>Caso queira enviar o presente do Mercado Livre diretamente para a nossa residência, copie o endereço e insira no endereço de entrega do Mercado Livre.</p>
-    <button class="btn btn-secondary" id="copyAddress" type="button">Copiar endereço de entrega</button>
-    <p id="addressCopyStatus" class="status" aria-live="polite"></p>
+    <p>Caso queira enviar o presente do Mercado Livre diretamente para a nossa residência, solicite o endereço de entrega pelo WhatsApp.</p>
+    <a class="btn btn-secondary" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511972933217?text=Ol%C3%A1%2C%20Renato%20e%20Iva!%20Gostaria%20de%20enviar%20um%20presente%20da%20lista%20do%20Mercado%20Livre%20diretamente%20para%20a%20resid%C3%AAncia%20de%20voc%C3%AAs.%20Poderiam%20me%20informar%20o%20endere%C3%A7o%20de%20entrega%2C%20por%20favor%3F">Solicitar endereço pelo WhatsApp</a>
   </section>
 
   <section id="pix" class="section card pix-card">
