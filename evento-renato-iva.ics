@@ -16,7 +16,7 @@ END:VTIMEZONE
 BEGIN:VEVENT
 UID:bodas-renato-iva-20261010@alceniralcantara.github.io
 DTSTAMP:20260902T120000Z
-DTSTART;TZID=America/Sao_Paulo:20261010T160000
+DTSTART;TZID=America/Sao_Paulo:20261010T170000
 SUMMARY:Bodas de Ouro — Renato e Iva
 DESCRIPTION:Celebração dos 50 anos de Renato e Iva.
 LOCATION:Rua João Florêncio de Sales Gomes\, 242
