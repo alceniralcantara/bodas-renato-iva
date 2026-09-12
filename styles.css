@@ -188,6 +188,8 @@ summary:focus-visible {
 }
 
 .action-group { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+.hero-actions { margin-top: 1rem; }
+.compact-status { margin-block: .5rem 0; font-size: .92rem; }
 .pix-details { max-width: 680px; margin: 1.25rem auto 0; text-align: left; }
 .pix-details summary { cursor: pointer; color: var(--gold-dark); font-weight: 700; text-align: center; }
 
@@ -235,6 +237,7 @@ footer { padding: 2rem 1rem; color: #65461a; text-align: center; }
   .card { border-radius: 18px; }
   .section { padding: 1.5rem .85rem; }
   .action-group .btn { width: 100%; }
+  .hero-actions .music { width: 100%; }
   .countdown { grid-template-columns: repeat(2, minmax(90px, 1fr)); }
 }
 

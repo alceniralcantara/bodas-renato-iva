@@ -1,5 +1,5 @@
 const pixKey = document.getElementById('pixKey').textContent.trim();
-const eventDate = new Date('2026-10-10T16:00:00-03:00');
+const eventDate = new Date('2026-10-10T17:00:00-03:00');
 
 async function copyText(text) {
   if (navigator.clipboard && window.isSecureContext) {
@@ -18,6 +18,35 @@ async function copyText(text) {
   textArea.remove();
   if (!copied) throw new Error('Não foi possível copiar');
 }
+
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  const status = document.getElementById('shareStatus');
+  const invitationUrl = document.querySelector('link[rel="canonical"]').href;
+  const shareData = {
+    title: 'Bodas de Ouro — Renato e Iva',
+    text: 'Você é nosso convidado para celebrar as Bodas de Ouro de Renato e Iva, no dia 10 de outubro de 2026, às 17h.',
+    url: invitationUrl
+  };
+
+  status.textContent = '';
+
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+      status.textContent = 'Convite compartilhado!';
+      return;
+    } catch (error) {
+      if (error.name === 'AbortError') return;
+    }
+  }
+
+  try {
+    await copyText(invitationUrl);
+    status.textContent = 'Link do convite copiado! Agora é só enviar.';
+  } catch {
+    status.textContent = 'Não foi possível compartilhar automaticamente.';
+  }
+});
 
 function updateCountdown() {
   const countdown = document.getElementById('countdown');
